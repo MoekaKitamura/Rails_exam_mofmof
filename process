@@ -1,0 +1,65 @@
+# バージョン
+- Ruby 2.6.3
+- Ruby on Rails 5.2.5
+# ミドルウェア
+- SQLite（バージョンは問いません）
+# その他
+- 機能の実装にはgemは使用しないこと
+- accepts_nested_attributes_forメソッドを使うこと
+- 最寄駅がゼロの場合、もしくは1つしかない物件も登録できること
+- 賃貸物件の新規登録画面・詳細画面において追加した最寄り駅の数が表示されていること
+- 編集画面では、あらたにひとつの最寄駅を登録できる入力欄を表示させること。これにより、最寄駅の登録数が増えても対応できるようにすること。
+- 課題の提出はPullRequest形式で行い、masterブランチに直接コミットしないこと
+
+
+物件 property
+物件名/賃料/住所/築年数/備考
+property_name/price/address/age/note
+
+最寄駅 station
+路線名/駅名/徒歩分数/物件ID
+line/station_name/walk/property_id
+
+同時に登録できる
+accepts_nested_attributes_forメソッドを使う
+親モデルのレコードが保存されるタイミングで、子モデルの複数のレコードを保存する際に使用します。
+
+最寄り駅の数を表示させるためのヒントです。
+Rubyの自己代入を使って実装してみましょう。
+
+--------------------------------------------
+githubからimport URLを入れるだけで簡単に自分のgithubにimportできる
+そこからclone作成
+$ git clone https://github.com/MoekaKitamura/Rails_exam_mofmof.git
+ここでHTTPSをコピーしてしまったのが失敗。SSHをしないと、毎回パスワードを求められることに。
+=> commit先url変更
+$ git remote set-url origin git@github.com:MoekaKitamura/Rails_exam_mofmof.git
+git add .
+git commit -m "initial commit"
+git status
+git remote -v
+git checkout -b dev_exam
+git push origin dev_exam
+
+いつもの初期設定。今回は最小限で。
+
+rails g scaffold Property property_name:string price:integer address:string age:integer note:text
+rails g scaffold Station line:string station_name:string walk:integer property:references
+rails db:migrate
+rails s
+
+modelにhas_manyの設定
+validation
+
+accepts_nested_attributes_forメソッド適用
+CSS適用
+
+日本語カラム適用
+-------------------------------------------------
+
+accepts_nested_attributes_forメソッドもう少し理解
+✅最寄駅がゼロの場合、もしくは1つしかない物件も登録できること
+✅賃貸物件の新規登録画面・詳細画面において追加した最寄り駅の数が表示されていること
+  <% n = 0 %> and  <%= n += 0 %>
+✅編集画面では、あらたにひとつの最寄駅を登録できる入力欄を表示させること。これにより、最寄駅の登録数が増えても対応できるようにすること。
+
