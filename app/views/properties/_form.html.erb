@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :price %>
-    <%= form.number_field :price %>円
+    <%= form.number_field :price %>万円
   </div>
 
   <div class="field">
@@ -38,9 +38,9 @@
 
 ----------------------------------------------------
   <%= form_for @property do |f| %>
-  
+  <% n = 0 %>
     <%= f.fields_for :stations do |station| %>
-      <h4>最寄駅</h4>
+      <h4>最寄駅<%= n += 1 %></h4>
       <div class="field">
         <%= station.label :line %>
         <%= station.text_field :line %>
@@ -55,7 +55,7 @@
         <%= station.label :walk %>
         <%= station.number_field :walk %>分
       </div>
------------------------------------------------------
+----------------------------------------------------
     <% end %>
     <div class="actions">
       <%= form.submit :登録する%>
