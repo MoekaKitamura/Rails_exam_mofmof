@@ -14,6 +14,7 @@ class PropertiesController < ApplicationController
   end
 
   def edit
+    @property.stations.build
   end
 
   def create
@@ -44,6 +45,7 @@ class PropertiesController < ApplicationController
   end
 
   def property_params
-    params.require(:property).permit(:property_name, :price, :address, :age, :note, stations_attributes:[:id, :line, :station_name, :walk, :_destroy])
+    params.require(:property).permit(:property_name, :price, :address, :age,
+       :note, stations_attributes:[:id, :line, :station_name, :walk])
   end
 end

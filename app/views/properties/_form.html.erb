@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :price %>
-    <%= form.number_field :price %>
+    <%= form.number_field :price %>円
   </div>
 
   <div class="field">
@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= form.label :age %>
-    <%= form.number_field :age %>
+    <%= form.number_field :age %>年
   </div>
 
   <div class="field">
@@ -36,34 +36,31 @@
     <%= form.text_area :note %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-
+----------------------------------------------------
   <%= form_for @property do |f| %>
-  <h4>stations</h4>
-    <%= f.fields_for :stations do |stations_form| %>
-
+  
+    <%= f.fields_for :stations do |station| %>
+      <h4>最寄駅</h4>
       <div class="field">
-        <%= stations_form.label :line %>
-        <%= stations_form.text_field :line %>
+        <%= station.label :line %>
+        <%= station.text_field :line %>
       </div>
 
       <div class="field">
-        <%= stations_form.label :station_name %>
-        <%= stations_form.text_field :station_name %>
+        <%= station.label :station_name %>
+        <%= station.text_field :station_name %>
       </div>
 
      <div class="field">
-        <%= stations_form.label :walk %>
-        <%= stations_form.number_field :walk %>
+        <%= station.label :walk %>
+        <%= station.number_field :walk %>分
       </div>
-
+-----------------------------------------------------
     <% end %>
-  
+    <div class="actions">
+      <%= form.submit :登録する%>
+    </div>
   <% end %>
-
-<div><%= form.submit :登録する%></div>
 
 <% end %>
 

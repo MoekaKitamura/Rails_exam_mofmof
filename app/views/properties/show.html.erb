@@ -1,29 +1,68 @@
+<h1>詳細</h1>
+<br>
 <p id="notice"><%= notice %></p>
 
+
 <p>
-  <strong>Property name:</strong>
+  <strong>物件名:</strong>
   <%= @property.property_name %>
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong>賃料:</strong>
   <%= @property.price %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>住所:</strong>
   <%= @property.address %>
 </p>
 
 <p>
-  <strong>Age:</strong>
+  <strong>築年数:</strong>
   <%= @property.age %>
 </p>
 
 <p>
-  <strong>Note:</strong>
+  <strong>備考:</strong>
   <%= @property.note %>
 </p>
 
-<%= link_to 'Edit', edit_property_path(@property) %> |
-<%= link_to 'Back', properties_path %>
+<% if @property.stations.first.present? %>
+----------------------------------------------------
+<p>
+  <strong>路線名:</strong>
+  <%= @property.stations.first.line %>
+</p>
+
+<p>
+  <strong>駅名:</strong>
+  <%= @property.stations.first.station_name %>
+</p>
+
+<p>
+  <strong>徒歩分数:</strong>
+  <%= @property.stations.first.walk %>
+</p>
+<% end %>
+
+<% if @property.stations[1].present? %>
+------------------------------------------------------
+<p>
+  <strong>路線名:</strong>
+  <%= @property.stations[1].line %>
+</p>
+
+<p>
+  <strong>駅名:</strong>
+  <%= @property.stations[1].station_name %>
+</p>
+
+<p>
+  <strong>徒歩分数:</strong>
+  <%= @property.stations[1].walk %>
+</p>
+<% end %>
+<br>
+<%= link_to '編集', edit_property_path(@property) %> |
+<%= link_to '戻る', properties_path %>
